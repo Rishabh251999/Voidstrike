@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201c504be7e54d4469c51b39019653f9, type: 3}
+  m_Name: Class 3 Spectre
+  m_EditorClassIdentifier: 
+  shipClass: 2
+  shipType: 1
+  price: 280000
+  hull: 600
+  shields: 55
+  jumpSpeed: 10
+  evasion: 35
+  aggressionFactor: 60
+  maxGuns: 4
+  maxMiscPods: 4
+  id: 6
+  rewardMyth: 6900
+  classShipNames:
+  - Loray
+  - Vesta
+  shipName: 
+  shipAvatar: {fileID: 21300000, guid: 7fdbb7b356bd63b49b644591862cfa02, type: 3}

@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb405ca9f0b91747a0e6202a0f12273, type: 3}
+  m_Name: All Data
+  m_EditorClassIdentifier: 
+  whichScene: ' '
+  previousScene: 
+  volumeValue: -1
+  sfxVolumeValue: 0.3
+  shipHealth: 0.9057
+  shipMaxHealth: 120
+  pilotData: {fileID: 11400000, guid: 05ec4c0c3c18e404f9f614161a875cef, type: 2}
+  shipData: {fileID: 0}
+  podDatas:
+  - {fileID: 11400000, guid: ef69b7edc172ba4448da10b055b648de, type: 2}
+  - {fileID: 11400000, guid: ef69b7edc172ba4448da10b055b648de, type: 2}
+  weaponDatas:
+  - {fileID: 11400000, guid: 66941e8ee0c13024e8b1b9b0a0d756a5, type: 2}
+  nodeNpcShips:
+  - {fileID: 2797080854929269277, guid: b3d762e43a8af3a4ab839e3f106de341, type: 3}
+  - {fileID: 4558076671000997700, guid: dacf96f9b7637df4e86e967c60a97cde, type: 3}
+  - {fileID: 4558076671000997700, guid: 35fb174ba1fb6f841848988d730ee554, type: 3}
+  shipPlans: []
+  discoveredNodes: []
+  missionsData: []
+  leftShipImages:
+  - {fileID: 21300000, guid: 797ee8a93dcb9834c88fe9c2cb55b7f5, type: 3}
+  - {fileID: 21300000, guid: 0a97853ed1c7cc947842eccaada0e65d, type: 3}
+  - {fileID: 21300000, guid: 521919b60dd18f44c9e26f77e30aab44, type: 3}
+  - {fileID: 21300000, guid: bc6e97bed0263cc49ad9293e1cfd0679, type: 3}
+  - {fileID: 21300000, guid: bb82ab812cdc43e4ebe7fa96138c192f, type: 3}
+  - {fileID: 21300000, guid: 34b2339ed82ce77429e42fe7cbde17c7, type: 3}
+  - {fileID: 21300000, guid: b47b22d4f4add1945b46cada13cdd0c6, type: 3}
+  - {fileID: 21300000, guid: deb1ac0192e3a8647acc9396a267dc5d, type: 3}
+  - {fileID: 21300000, guid: 6eab47fcf0e1a24438223e4c4a034a5f, type: 3}
+  - {fileID: 21300000, guid: 46d864a5a2e563a468be36cf810cb04e, type: 3}
+  - {fileID: 21300000, guid: 5965b87b87ef0504da26ef450b2d1696, type: 3}
+  - {fileID: 21300000, guid: b577179173f5b054391897207c34d699, type: 3}
+  - {fileID: 21300000, guid: 99e083abccd23ea44a4500b43a70b5c8, type: 3}
+  - {fileID: 21300000, guid: 7fdbb7b356bd63b49b644591862cfa02, type: 3}
+  - {fileID: 21300000, guid: 2b13b8debe8c7624e8249a98b491bb27, type: 3}
+  frontShipImages:
+  - {fileID: 21300000, guid: f3a1450c44e4b55419153ce059141dfa, type: 3}
+  - {fileID: 21300000, guid: 2ea41368d5d1a35469a5690814f5d3aa, type: 3}
+  - {fileID: 21300000, guid: e602feddd1f80064b9697ad3280bf28d, type: 3}
+  - {fileID: 21300000, guid: 79bb571e1e4a9fe4987e8f165060f11e, type: 3}
+  - {fileID: 21300000, guid: ee15433bf1dd0924fb65163fd8fbf4f1, type: 3}
+  - {fileID: 21300000, guid: e4a459b5266a58e4bbe5791a3283445c, type: 3}
+  - {fileID: 21300000, guid: 8918bb1096b8b9a40913c0fe1a202d69, type: 3}
+  - {fileID: 21300000, guid: b3f15a0db3972f5449908cd932ff36a9, type: 3}
+  - {fileID: 21300000, guid: e86f5d22886029a49b86823689ca0658, type: 3}
+  - {fileID: 21300000, guid: 38b5277b79c512745840c248babafd14, type: 3}
+  - {fileID: 21300000, guid: 70ccd5cbd7b901d44afb7fe17fe38aee, type: 3}
+  - {fileID: 21300000, guid: 191f0947f925a4d47a177c52935a363f, type: 3}
+  - {fileID: 21300000, guid: 38dc008fafe296c419acbda490a0416c, type: 3}
+  - {fileID: 21300000, guid: 6e84da8a1d5ed9c49964461b0b72a661, type: 3}
+  - {fileID: 21300000, guid: 8f0585df6fbb4bd4288cb12fd826a9e5, type: 3}
+  redShipImages:
+  - {fileID: 21300000, guid: c2d73ad1ef3b89c41821edbbae3d7d6f, type: 3}
+  - {fileID: 21300000, guid: ee58bf5d98462fc4f907003964a3404e, type: 3}
+  - {fileID: 21300000, guid: ffb913af08311c14aa9618a35b3813df, type: 3}
+  - {fileID: 21300000, guid: 472a9514d9c4d07428eeab313cca2d1c, type: 3}
+  - {fileID: 21300000, guid: f6df908d64aba5d4fb5aba2a172c5af0, type: 3}
+  - {fileID: 21300000, guid: 06223a62e055a294cac504ac38b0405b, type: 3}
+  - {fileID: 21300000, guid: 766e5f8f77926fe4a9ddc26305c9359c, type: 3}
+  - {fileID: 21300000, guid: c488ff9e61c95064d97503679dd8b27d, type: 3}
+  - {fileID: 21300000, guid: d2d2f09a828660745b4ea41590dcc145, type: 3}
+  - {fileID: 21300000, guid: 2892eafb3c09a114c91a86ec729b8eec, type: 3}
+  - {fileID: 21300000, guid: 77c1486700210954682c8d999c38ed4d, type: 3}
+  - {fileID: 21300000, guid: 4436fb8d16d1e024dbd7d2cd510e76f1, type: 3}
+  - {fileID: 21300000, guid: 106caab538956e54c9e4fe5531f23c7b, type: 3}
+  - {fileID: 21300000, guid: 277f7d74d6b1f9d4caaab3576a44c1aa, type: 3}
+  - {fileID: 21300000, guid: bcaf0a6078363564cba5a6f0cde08a3b, type: 3}
+  actualNode: 
+  lastVisitedPlanet: 
+  playerName: 
+  currency: 0
+  kills: 0
+  pvpKills: 0
+  slot: 0
+  playerId: 
+  shipCombatStatsAllData:
+    hull: 0
+    maxHull: 0
+    shields: 0
+    evasion: 0
+    jumpSpeed: 0
+  nodesData: []
+  shipFunNames: []

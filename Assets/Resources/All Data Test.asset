@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb405ca9f0b91747a0e6202a0f12273, type: 3}
+  m_Name: All Data Test
+  m_EditorClassIdentifier: 
+  whichScene: ' '
+  previousScene: 
+  volumeValue: -1
+  sfxVolumeValue: 0.3
+  shipHealth: 1
+  shipMaxHealth: 230
+  pilotData: {fileID: 11400000, guid: ccbd74aa32603214797f95a92369c0ed, type: 2}
+  shipData: {fileID: 11400000, guid: 23a180533801e6c4f97de96a00ed9f99, type: 2}
+  podDatas: []
+  weaponDatas:
+  - {fileID: 11400000, guid: cf783bdd9d4c38f459bafe4e86490f55, type: 2}
+  - {fileID: 11400000, guid: 9370b08094d3de84da666cafb8294873, type: 2}
+  nodeNpcShips:
+  - {fileID: 2797080854929269277, guid: b3d762e43a8af3a4ab839e3f106de341, type: 3}
+  - {fileID: 4558076671000997700, guid: 35fb174ba1fb6f841848988d730ee554, type: 3}
+  - {fileID: 4558076671000997700, guid: dacf96f9b7637df4e86e967c60a97cde, type: 3}
+  - {fileID: 4558076671000997700, guid: 35fb174ba1fb6f841848988d730ee554, type: 3}
+  - {fileID: 4558076671000997700, guid: dacf96f9b7637df4e86e967c60a97cde, type: 3}
+  - {fileID: 4558076671000997700, guid: 35fb174ba1fb6f841848988d730ee554, type: 3}
+  shipPlans: []
+  discoveredNodes: []
+  missionsData: []
+  leftShipImages:
+  - {fileID: 21300000, guid: 797ee8a93dcb9834c88fe9c2cb55b7f5, type: 3}
+  - {fileID: 21300000, guid: 0a97853ed1c7cc947842eccaada0e65d, type: 3}
+  - {fileID: 21300000, guid: 521919b60dd18f44c9e26f77e30aab44, type: 3}
+  - {fileID: 21300000, guid: bc6e97bed0263cc49ad9293e1cfd0679, type: 3}
+  - {fileID: 21300000, guid: bb82ab812cdc43e4ebe7fa96138c192f, type: 3}
+  frontShipImages:
+  - {fileID: 21300000, guid: f3a1450c44e4b55419153ce059141dfa, type: 3}
+  - {fileID: 21300000, guid: 2ea41368d5d1a35469a5690814f5d3aa, type: 3}
+  - {fileID: 21300000, guid: e602feddd1f80064b9697ad3280bf28d, type: 3}
+  - {fileID: 21300000, guid: 79bb571e1e4a9fe4987e8f165060f11e, type: 3}
+  - {fileID: 21300000, guid: ee15433bf1dd0924fb65163fd8fbf4f1, type: 3}
+  redShipImages:
+  - {fileID: 21300000, guid: c2d73ad1ef3b89c41821edbbae3d7d6f, type: 3}
+  - {fileID: 21300000, guid: ee58bf5d98462fc4f907003964a3404e, type: 3}
+  - {fileID: 21300000, guid: ffb913af08311c14aa9618a35b3813df, type: 3}
+  - {fileID: 21300000, guid: 472a9514d9c4d07428eeab313cca2d1c, type: 3}
+  - {fileID: 21300000, guid: f6df908d64aba5d4fb5aba2a172c5af0, type: 3}
+  actualNode: A1
+  lastVisitedPlanet: A1
+  playerName: A
+  currency: 452420
+  kills: 333
+  slot: 1
+  playerId: 
+  shipCombatStatsAllData:
+    hull: 0
+    maxHull: 0
+    shields: 0
+    evasion: 0
+    jumpSpeed: 0

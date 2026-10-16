@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438de838dfd531b46be52451c981e69f, type: 3}
+  m_Name: A4
+  m_EditorClassIdentifier: 
+  adjacentNodes:
+  - A3
+  - A5
+  discovered: 1
+  npcShips:
+  - {fileID: 5296132866631305077, guid: 903d69f9c7ddb43488dbba1a98e2dbf5, type: 3}
+  - {fileID: 8390001880797893301, guid: e00a9a01bfe5fdc43b831ad6580c6e31, type: 3}
+  - {fileID: 1021715764429517725, guid: 0014b79c1e0077240ad46d451d8bc8b5, type: 3}
+  - {fileID: 1021715764429517725, guid: 1d438bc32c26de949a968aeb1bc02f5a, type: 3}
+  - {fileID: 1940327750050841793, guid: d5f5c92e238b02a45ad173b36e9904ed, type: 3}
+  totalNpcsPerShipClass: 2
+  totalNodeShips: 6
+  currentShips: []

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f623d2c50b9ba5b49a2cd43f9d0635de, type: 3}
+  m_Name: Female Alien
+  m_EditorClassIdentifier: 
+  pilotName: Female Alien
+  nickName: Abyssians
+  origin: Lethe
+  description: Pacifist and distant by nature, Abyssians have never aligned themselves
+    with any other origin. Methodical and efficient in all.
+  pilotAvatar: {fileID: 21300000, guid: 2a5736de8795f1246a707faf4d1fb48e, type: 3}
+  skills:
+  - skill_Type: 5
+    value: -10
+  - skill_Type: 4
+    value: 10

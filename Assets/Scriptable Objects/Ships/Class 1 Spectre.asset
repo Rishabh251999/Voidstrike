@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201c504be7e54d4469c51b39019653f9, type: 3}
+  m_Name: Class 1 Spectre
+  m_EditorClassIdentifier: 
+  shipClass: 0
+  shipType: 1
+  price: 12000
+  hull: 300
+  shields: 50
+  jumpSpeed: 14
+  evasion: 30
+  aggressionFactor: 30
+  maxGuns: 2
+  maxMiscPods: 4
+  id: 4
+  rewardMyth: 2000
+  classShipNames:
+  - Kali
+  - Morax
+  shipName: 
+  shipAvatar: {fileID: 21300000, guid: bc6e97bed0263cc49ad9293e1cfd0679, type: 3}

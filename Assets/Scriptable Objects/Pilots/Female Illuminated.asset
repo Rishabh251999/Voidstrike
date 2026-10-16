@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f623d2c50b9ba5b49a2cd43f9d0635de, type: 3}
+  m_Name: Female Illuminated
+  m_EditorClassIdentifier: 
+  pilotName: Female Illuminated
+  nickName: Illuminated
+  origin: Epione
+  description: Long-believed to be a race of demigods, the Illuminated are the most
+    advanced and civilized origin.
+  pilotAvatar: {fileID: 21300000, guid: f414ab7dd4fec384d86ca895fd662dac, type: 3}
+  skills:
+  - skill_Type: 2
+    value: 7
+  - skill_Type: 3
+    value: 7
+  - skill_Type: 0
+    value: 7
+  - skill_Type: 1
+    value: 7
