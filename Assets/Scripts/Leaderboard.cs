@@ -22,15 +22,15 @@ public class Leaderboard : MonoBehaviour
     public TextMeshProUGUI playerHoursNames;
     public TextMeshProUGUI playerHoursScores;
 
-    private string leaderboardCurrencyID = "20539"; // "15483";
-    private string leaderboardKillsID = "15679";
-    private string leaderboardPvpKillsID = "20160";
-    private string leaderboardHoursID = "15680";
-    private string leaderboardLastLoginID = "18325";
+    private string leaderboardCurrencyID = "37209"; // "15483";
+    private string leaderboardKillsID = "37210";
+    private string leaderboardPvpKillsID = "37211";
+    private string leaderboardHoursID = "37212";
+    private string leaderboardLastLoginID = "37205";
     private readonly string key = "AlreadyTwitterRewarded";
     private readonly int TWITTER_REWARD = 100000;
     // Ship Slot Health Leaderboards. Use for storing ships health, each one corresponds to a slot.
-    List<string> lootlockerStoreNames = new List<string> {"17059", "17061", "17062", "17063"};
+    List<string> lootlockerStoreNames = new() { "37214", "37215", "37216", "37217"};
 
     [Header("SO")]
     public Data allData;
@@ -255,11 +255,10 @@ public class Leaderboard : MonoBehaviour
     {
         LootLockerSDKManager.GetMemberRank(leaderboardLastLoginID, playerID, (response) =>
         {
-            if (response.statusCode == 200) {
-                int lastLoginScore = response.score;
-                callback(lastLoginScore);
-            } else {
-            }
+            if (response.statusCode == 200)
+                callback(response.score);
+            else
+                callback(0); // no entry or error: treat as "never logged in"
         });
     }
 
@@ -301,9 +300,9 @@ public class Leaderboard : MonoBehaviour
                     GameManager.Instance.currency = response.score;
                     GameManager.Instance.currencyText.text = response.score.ToString("#,#", CultureInfo.InvariantCulture);
                 }
-            } else {
-                Debug.Log("failed: " + response.Error);
             }
+
+            Debug.Log("GetPlayerCurrency response: " + response.statusCode + ", score: " + response.score + ", metadata: " + response.metadata);
         });
     }
 

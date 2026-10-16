@@ -907,7 +907,7 @@ public class BattleManager : MonoBehaviour
     public void SetLootlockerShipHP(int slot, float health)
     {
         // Ship Slot Health Leaderboards. Use for storing ships health, each one corresponds to a slot.
-        List<string> lootlockerStoreNames = new List<string> {"17059", "17061", "17062", "17063"};
+        List<string> lootlockerStoreNames = new List<string> { "37214", "37215", "37216", "37217" };
 
         if(health >= 0.01f)
         {

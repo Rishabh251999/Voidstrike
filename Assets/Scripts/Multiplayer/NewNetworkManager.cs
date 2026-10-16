@@ -20,6 +20,7 @@ public class NewNetworkManager : NetworkManager
     [Header("Strings")]
     public string serverVersion = "1.0.0";
 
+
     [Header("Floats")]
     private float joinTime;
     private float disconnectTime;
@@ -30,13 +31,13 @@ public class NewNetworkManager : NetworkManager
     /// </summary>
     public override void Awake()
     {
-        base.Awake();
-
-        if (singleton != null)
+        if (singleton != null && singleton != this)
+        {
             Destroy(gameObject);
+            return;
+        }
 
-        else
-            singleton = this;
+        singleton = this;
     }
 
 
@@ -55,7 +56,7 @@ public class NewNetworkManager : NetworkManager
     {
         base.Start();
 
-        if(autoConnectClientBuild)
+        if(headlessStartMode is HeadlessStartOptions.AutoStartClient)
             StartClient();
     }
 
@@ -64,7 +65,7 @@ public class NewNetworkManager : NetworkManager
     /// </summary>
     public override void Update()
     {
-        base.LateUpdate();
+        base.Update();
     }
 
     /// <summary>

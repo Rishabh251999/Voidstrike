@@ -1099,7 +1099,7 @@ public class PlayerSessionManager : MonoBehaviour
     {
         int checks = 0;
 
-        List<string> lootlockerStoreNames = new List<string> {"17059", "17061", "17062", "17063"};
+        List<string> lootlockerStoreNames = new List<string> { "37214", "37215", "37216", "37217" };
         
         foreach (string shipSlot in lootlockerStoreNames)
         {
@@ -1121,9 +1121,7 @@ public class PlayerSessionManager : MonoBehaviour
                     } else {
                         GameManager.Instance.ResetBuyShipSlot(currentCheck, false);
                     }
-                } else {
-                    Debug.Log("failed: " + response.Error);
-                }   
+                }
             });
             checks++;
         }

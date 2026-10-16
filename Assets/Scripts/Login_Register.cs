@@ -10,6 +10,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 
+[RequireComponent(typeof(TimeStampAPI))]
 public class Login_Register : MonoBehaviour
 {
     [Header("InputField")]
@@ -137,69 +138,54 @@ public class Login_Register : MonoBehaviour
         }
         else
         {
-            StartCoroutine(CheckLoginEnabled((isEnabled) => {
-                if (isEnabled)
+            timeAPI = GetComponent<TimeStampAPI>();
+            // googleSheetsAPIConnector = GetComponent<GoogleSheetsAPIConnector>();
+            // Remember to use the LootLocker namespace in the top of your file.
+            LootLockerSDKManager.CheckWhiteLabelSession(response =>
+            {
+                if (response)
                 {
-                    StartCoroutine(GetInitialCurrency((currency) => {
-                        initialCurrency = currency;
-                        // whitelisteAPI = GetComponent<WhitelistAPI>();
-                        timeAPI = GetComponent<TimeStampAPI>();
-                        // googleSheetsAPIConnector = GetComponent<GoogleSheetsAPIConnector>();
-                        // Remember to use the LootLocker namespace in the top of your file.
-                        LootLockerSDKManager.CheckWhiteLabelSession(response =>
+                    infoText.text = "Session found";
+                    // Start a new session
+                    LootLockerSDKManager.StartWhiteLabelSession(resp =>
+                    {
+                        if (resp.success)
                         {
-                            if (response)
+                            StartCoroutine(CheckAlreadyLogged(resp.player_id.ToString(), (alreadyLoggedin) =>
                             {
-                                infoText.text = "Session found";
-                                // Start a new session
-                                LootLockerSDKManager.StartWhiteLabelSession(resp =>
+                                if (alreadyLoggedin)
                                 {
-                                    if (resp.success)
+                                    infoText.text = "Wait up to 60 seconds before logging in to allow the server to reset your other session.";
+                                }
+                                else
+                                {
+                                    StartCoroutine(CheckFirstTimeLogin(() =>
                                     {
-                                        StartCoroutine(CheckAlreadyLogged(resp.player_id.ToString(), (alreadyLoggedin) =>
+                                        // Code here will run after the CheckFirstTimeLogin coroutine completes.
+                                        infoText.text = "Loading...";
+                                        // Get and Set LootLocker init player's data
+                                        playerSessionManager.StartPlayerSession(resp.player_id.ToString(), () =>
                                         {
-                                            if (alreadyLoggedin)
-                                            {
-                                                infoText.text = "Wait up to 60 seconds before logging in to allow the server to reset your other session.";
-                                            }
-                                            else
-                                            {
-                                                StartCoroutine(CheckFirstTimeLogin(() =>
-                                                {
-                                                    // Code here will run after the CheckFirstTimeLogin coroutine completes.
-                                                    infoText.text = "Loading...";
-                                                    // Get and Set LootLocker init player's data
-                                                    playerSessionManager.StartPlayerSession(resp.player_id.ToString(), () =>
-                                                    {
-                                                        EnableMainMenu();
-                                                    });
-                                                }));
-                                            }
-                                        }));
-                                    }
-                                    else
-                                    {
-                                        Debug.Log("Error starting session");
-                                    }
-                                });
+                                            EnableMainMenu();
+                                        });
+                                    }));
+                                }
+                            }));
+                        }
+                        else
+                        {
+                            Debug.Log("Error starting session");
+                        }
+                    });
 
-                            }
-                            else
-                            {
-                                // Show login form here
-                                Debug.Log("session is NOT valid, we should show the login form");
-                                loginPanel.SetActive(true);
-                            }
-                        });
-                    }));
                 }
                 else
                 {
-                    // Insert the actions to be performed when login is not enabled
-                    infoText.color = Color.red;
-                    infoText.text = "Login is currently disabled. Please try again later.";
+                    // Show login form here
+                    Debug.Log("session is NOT valid, we should show the login form");
+                    loginPanel.SetActive(true);
                 }
-            }));
+            });
         }
     }
 
@@ -208,55 +194,43 @@ public class Login_Register : MonoBehaviour
         string email = existingUserEmailInputField.text;
         string password = existingUserPasswordInputField.text;
 
-        StartCoroutine(CheckLoginEnabled((isEnabled) => {
-            if (isEnabled)
+        LootLockerSDKManager.WhiteLabelLoginAndStartSession(email, password, true, loginResponse =>
+        {
+            if (!loginResponse.success)
             {
-                // Continue with the login process
-                LootLockerSDKManager.WhiteLabelLoginAndStartSession(email, password, true, loginResponse =>
-                {
-                    if (!loginResponse.success)
-                    {
-                        // Login error
-                        infoText.color = Color.red;
-                        infoText.text = "Username or password is wrong!";
-                    }
-                    else
-                    {
-                        // Login successful
-                        infoText.color = Color.white;
-                        infoText.text = "Player was logged in successfully.";
-
-                        StartCoroutine(CheckAlreadyLogged(loginResponse.SessionResponse.player_id.ToString(), (alreadyLoggedin) => {
-                            if(alreadyLoggedin)
-                            {
-                                // Player is already logged in elsewhere
-                                infoText.text = "Wait up to 60 seconds before logging in to allow the server to reset your other session.";
-                            }
-                            else
-                            {
-                                // New login
-                                StartCoroutine(CheckFirstTimeLogin(() => 
-                                {
-                                    // Successful first-time login actions
-                                    infoText.text = "Loading...";
-                                    playerSessionManager.StartPlayerSession(loginResponse.SessionResponse.player_id.ToString(), () => {
-                                        EnableMainMenu();
-                                    });
-
-                                }));
-                            }
-                        }));
-                    }
-                    loginButton.GetComponent<Image>().sprite = defaultLoginButton;
-                });
+                // Login error
+                infoText.color = Color.red;
+                infoText.text = "Username or password is wrong!";
             }
             else
             {
-                // Login is not enabled, show error message
-                infoText.color = Color.red;
-                infoText.text = "Login is currently disabled. Please try again later.";
+                // Login successful
+                infoText.color = Color.white;
+                infoText.text = "Player was logged in successfully.";
+
+                StartCoroutine(CheckAlreadyLogged(loginResponse.SessionResponse.player_id.ToString(), (alreadyLoggedin) => {
+                    if (alreadyLoggedin)
+                    {
+                        // Player is already logged in elsewhere
+                        infoText.text = "Wait up to 60 seconds before logging in to allow the server to reset your other session.";
+                    }
+                    else
+                    {
+                        // New login
+                        StartCoroutine(CheckFirstTimeLogin(() =>
+                        {
+                            // Successful first-time login actions
+                            infoText.text = "Loading...";
+                            playerSessionManager.StartPlayerSession(loginResponse.SessionResponse.player_id.ToString(), () => {
+                                EnableMainMenu();
+                            });
+
+                        }));
+                    }
+                }));
             }
-        }));
+            loginButton.GetComponent<Image>().sprite = defaultLoginButton;
+        });
     }
 
     private IEnumerator CheckAlreadyLogged(string playerID, Action<bool> callback)
@@ -369,96 +343,20 @@ public class Login_Register : MonoBehaviour
 
         existingUserEmailInputField.text = email;
         existingUserPasswordInputField.text = password;
-        StartCoroutine(SignUpProcess(email, password));
-    }
 
-    private IEnumerator SignUpProcess(string email, string password)
-    {
-        bool whitelistEnabled = false;
-        bool isEmailWhitelisted = false;
-
-        // Check if whitelist is enabled
-        yield return StartCoroutine(CheckWhitelistedEnabled((isEnabled) => {
-            Debug.Log("isEnabled: " + isEnabled);
-            whitelistEnabled = isEnabled;
-        }));
-
-        if (whitelistEnabled){
-            // Start the whitelist check
-            yield return StartCoroutine(CheckIfEmailIsWhitelisted(email, (whitelisted) => {
-                Debug.Log("whitelisted: " + whitelisted);
-                isEmailWhitelisted = whitelisted;
-            }));
-        }
-
-        // Continue with the sign-up process based on the whitelist check
-        if (isEmailWhitelisted || !whitelistEnabled)
+        LootLockerSDKManager.WhiteLabelSignUp(email, password, (response) =>
         {
-            Debug.Log("ENTERS");
-            LootLockerSDKManager.WhiteLabelSignUp(email, password, (response) =>
+            if (!response.success)
             {
-                if (!response.success)
-                {
-                    infoText.color = Color.red;
-                    infoText.text = "Error signing up!";
-                }
-                else
-                {
-                    infoText.color = Color.white;
-                    infoText.text = "Verification link sent. Check Email.";
-                }
-            });
-        }
-        else
-        {
-            infoText.color = Color.red;
-            infoText.text = "You are not in the allowed list.";
-        }
-    }
-
-    private IEnumerator CheckIfEmailIsWhitelisted(string email, Action<bool> callback)
-    {
-        // Assuming you have a reference to your WhitelistAPI instance
-        WhitelistAPI whitelistAPI = GetComponent<WhitelistAPI>();
-
-        // Now call the FetchWhitelist method with the email to check
-        yield return StartCoroutine(whitelistAPI.FetchWhitelist(email, (isWhitelisted) => {
-            callback(isWhitelisted);
-        }));
-    }
-
-    private IEnumerator CheckWhitelistedEnabled(Action<bool> callback)
-    {
-        // Assuming you have a reference to your WhitelistAPI instance
-        WhitelistAPI whitelistAPI = GetComponent<WhitelistAPI>();
-
-        // Now call the FetchWhitelist method with the email to check
-        yield return StartCoroutine(whitelistAPI.FetchWhitelistEnabled((isEnabled) => {
-            callback(isEnabled);
-        }));
-    }
-
-    private IEnumerator CheckLoginEnabled(Action<bool> callback)
-    {
-        // Assuming you have a reference to your WhitelistAPI instance
-        WhitelistAPI whitelistAPI = GetComponent<WhitelistAPI>();
-
-        // Now call the FetchWhitelist method with the email to check
-        yield return StartCoroutine(whitelistAPI.FetchLoginEnabled((isEnabled) => {
-            callback(isEnabled);
-        }));
-    }
-
-    private IEnumerator GetInitialCurrency(Action<int> callback)
-    {
-        // Assuming you have a reference to your WhitelistAPI instance
-        WhitelistAPI whitelistAPI = GetComponent<WhitelistAPI>();
-
-        // Now call the FetchInitialCurrency method
-        yield return StartCoroutine(whitelistAPI.FetchInitialCurrency((initialCurrency) => {
-            // Invoke the callback with the fetched initial currency value
-            callback(initialCurrency);
-        }));
+                infoText.color = Color.red;
+                infoText.text = "Error signing up!";
+            }
+            else
+            {
+                infoText.color = Color.white;
+                infoText.text = "Verification link sent. Check Email.";
+            }
+        });
     }
 
     public void SignOut()
